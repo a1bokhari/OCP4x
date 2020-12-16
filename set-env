@@ -1,0 +1,1 @@
+export KUBECONFIG=/root/OCP4x/ocp4/auth/kubeconfig

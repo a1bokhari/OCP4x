@@ -1,0 +1,70 @@
+apiVersion: v1
+baseDomain: pool1.com 
+compute:
+- hyperthreading: Enabled   
+  name: worker
+  replicas: 0 
+controlPlane:
+  hyperthreading: Enabled   
+  name: master 
+  replicas: 3 
+metadata:
+  name: ocp4poc 
+networking:
+#  networkType: OpenShiftSDN
+  networkType: OVNKubernetes
+  clusterNetworks:
+  - cidr: 10.128.0.0/14 
+    hostPrefix: 23 
+  serviceNetwork: 
+  - 172.30.0.0/16
+platform:
+  none: {}
+sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDBboAvU6Jo722e8N7w/AoWH2wVKyFrNWgnP5qFryLG5o604QOGGt3ZZ/ug0Yq2nKweAV7rbDmUIEUfxMfFsI9/Oy7/mib1HOOWId0n13efTx8nkXyree6wl+qm7NZxpYX7FMnNo75OFnU3rSYvJoo/q/j6IGRJdTqzoUU9qXpiiw+cNSLn9EA3+0ODeclGy66h4jpGV3MBpTGW30R4OT55oqTBqIzngsGXeDhQ38WHtbvqXmrIJOhuluuUYp43xPrcumUW+SYh4uGdzl+Fk48Wgb1VoBzndz1k5YcdMxT5IRox5c0ec4/XzmzCShlmQFXDF0Yu1uEsqYU73u0xCLz4er1gohpZAo3r18UMO6mIiSZQctZ7/FXICrNGbw/c/4gtbh5BQ0ahc2E6VpmdEBeDoDIlAylxSfrfyVMqap9RaX/Zphqulpvq4ZdO8SdxLHktXc5OGi4jEjJGRFPRDTgspsECUeC9NqjODhymWXT4PtYtpEetZKljHtBrQKJb2Rs= root@pool1-infra1.practice.redhat.com'
+pullSecret: '{"auths":{"pool1-infra.pool1.com:5000": {"auth": "ZHVtbXk6ZHVtbXk=","email": "you@example.com"}}}'
+# proxy:
+#   httpProxy: http://<username>:<pswd>@<ip>:<port> 
+#   httpsProxy: http://<username>:<pswd>@<ip>:<port> 
+#   noProxy: example.com 
+additionalTrustBundle: |
+  -----BEGIN CERTIFICATE-----
+  MIIF5TCCA82gAwIBAgIUC1vP6rgDhZOLBu6O/Yjm3wsSLXwwDQYJKoZIhvcNAQEL
+  BQAwgYExCzAJBgNVBAYTAlhYMRUwEwYDVQQHDAxEZWZhdWx0IENpdHkxHDAaBgNV
+  BAoME0RlZmF1bHQgQ29tcGFueSBMdGQxHjAcBgNVBAMMFXBvb2wxLWluZnJhLnBv
+  b2wxLmNvbTEdMBsGCSqGSIb3DQEJARYOdXNlckBwb29sMS5jb20wHhcNMjAxMjA1
+  MDE0NzQ2WhcNMjExMjA1MDE0NzQ2WjCBgTELMAkGA1UEBhMCWFgxFTATBgNVBAcM
+  DERlZmF1bHQgQ2l0eTEcMBoGA1UECgwTRGVmYXVsdCBDb21wYW55IEx0ZDEeMBwG
+  A1UEAwwVcG9vbDEtaW5mcmEucG9vbDEuY29tMR0wGwYJKoZIhvcNAQkBFg51c2Vy
+  QHBvb2wxLmNvbTCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBANHJrPrJ
+  m9OPIGUbWbcgSoGBI36U7pzYdv4aUOQFjEz2iN4rIsRQIGkOdDYjnOyoLaiDfrzP
+  CyWL2Fzt1j+Rji7IUDAD/XmIOsJdehj9F1tskA4UA4NtSrzuOZ18OSnOCtJ7Lw+i
+  /sQcQvH7rtZU3XqkifuQatf/Axz5CCGxoAuaGntlYfItXgOr7madyDBozfL2A21L
+  O5w+Ui1Hbjet46FRq467t/lkcp/tXS1GcKfNcJgiHTeA8suuQHAHALAMx7RXDwsa
+  uMXNXAqqdZXcXPI0NDnzdXNH8H/a+HxS5pZptWM9/UKLex6ioTqyHbU6LDql/A9j
+  gBbKsTEAJnhfMy4x0DWP6hPlazo9pYE0lTlGcCb/br+hLYsgsn/q7WFZ25h969kN
+  1A531X1RuotBJ2MhhYa7kikbHZIw71DSs6v6HHDILGknU0XpZS0ZbS1cjKHjwokY
+  5PuVk6WsmzwL47sJ2pvsoROnIZwFCmqxybac59REW9f+hBfmZ1EXElhDIo3PFhZV
+  zg/nMbsAfC452rHlOHpn2haHscLM/+t2MUvebxWnDDAlVLukxTar+1U8LNlO/gxb
+  eSWKGZEQbpO3u3Jamyu78Vii4PrHybyDLVVMON65evdSlu7wLr/+8jyPxkiKhms5
+  M3WUhLinti8wCCZA63cRTL/BvTIFhSaGjr4jAgMBAAGjUzBRMB0GA1UdDgQWBBQT
+  2UU9fSLtxF0o2mDEFY+vrUWdnDAfBgNVHSMEGDAWgBQT2UU9fSLtxF0o2mDEFY+v
+  rUWdnDAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4ICAQDIUn3owBNX
+  idA0HD47OCcPNVmz6I+isI/2aSUJPpEBbzJ9/03/5p+nQIP1HV1UuLnY6CQiLQcX
+  T2kuvrKUO2gQ8xdkB2EFmhQP75vD8pxsKYqnIbBpM0OlOv00wXZrctZh3BIZmtfr
+  pT8PcuuYYsbIfiOROlS/8HdXlCT88wWf6JuvFJc0gYFb4bSJ6vBA7pb+VISrWPnj
+  Twz6UDo0M/rxNf/hQmonpxI+MGG1CcKeHlbJKc3wHAFfUn6exkfwuwDab/UCiEY4
+  ZIuka/FLAVHekjUerI8dhPHoKKY0SiBOtbCvS0SNVAkQgqxty0UukoipL4CxNN0y
+  K34y5bfPk6ZndbDdnJy6aUL9l8G0YtEeDNi5EJ2vDrXO24LKtmruKZQPs35KL1zt
+  0H6h2VAf5S3+M+QqHgQ8LLrgUf0JXrY5c6Nca3oVnVZ50m/2C0+Jj3HQvsMqrcMH
+  Wbm5xDcvab4dc+jGRfKC17aDgAJ7S6ir/6k7ao/ItuW74AqPfUb9m06RxmCcyEzz
+  1FmotPidflES946ZAFXZgKIcxD3kWTH0LtKGaDSC0CRXg1qZ7jpU+UzDQLNMvz5v
+  3V3jLisIWg0YhhbLa2T/M9G9KdloHxVD4/O0MgyWP9nMXSjJdHVQeEIfv47K2rzO
+  SDXEa6Gd8cQ/7bIu4S/f4x7+/TSWabiB2Q==
+  -----END CERTIFICATE-----
+imageContentSources:
+- mirrors:
+  - pool1-infra.pool1.com:5000/ocp467
+  source: quay.io/openshift-release-dev/ocp-release
+- mirrors:
+  - pool1-infra.pool1.com:5000/ocp467
+  source: quay.io/openshift-release-dev/ocp-v4.0-art-dev
