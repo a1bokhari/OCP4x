@@ -1,1 +1,2 @@
 registry.access.redhat.com/ubi8/ubi=pool1-infra.pool1.com:5000/ocp467/ubi8/ubi
+registry.redhat.io/rhel8/support-tools=pool1-infra.pool1.com:5000/ocp467/rhel8/support-tools

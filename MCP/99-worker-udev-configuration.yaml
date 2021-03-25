@@ -1,0 +1,35 @@
+#
+# First generate the base 64 configuration for the new UDEV rule
+#    cat << EOF | base64
+#    > ACTION=="add|change", SUBSYSTEM=="block", KERNEL=="vdb",  ATTR{queue/rotational}="0"
+#    > EOF
+# This udev rule sets the ROTATIONAL flag for /dev/vdb to 0
+#
+# Then put the base 64 output into the "source: data" line (#28) after "..base64,"
+#
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: worker
+  name: worker-udev-configuration
+spec:
+  config:
+    ignition:
+      config: {}
+      security:
+        tls: {}
+      timeouts: {}
+      version: 2.2.0
+    networkd: {}
+    passwd: {}
+    storage:
+      files:
+      - contents:
+          source: data:text/plain;charset=utf-8;base64,QUNUSU9OPT0iYWRkfGNoYW5nZSIsIFNVQlNZU1RFTT09ImJsb2NrIiwgS0VSTkVMPT0idmRiIiwgIEFUVFJ7cXVldWUvcm90YXRpb25hbH09IjAiCg==
+          verification: {}
+        filesystem: root
+        mode: 420
+        path: /etc/udev/rules.d/99-ibm.rules
+  osImageURL: ""
+

@@ -22,7 +22,8 @@ export RH_OP_INDEX="registry.redhat.io/redhat/redhat-operator-index:v${OCP_RELEA
 export CERT_OP_INDEX="registry.redhat.io/redhat/certified-operator-index:v${OCP_RELEASE}"
 export COMM_OP_INDEX="registry.redhat.io/redhat/community-operator-index:v${OCP_RELEASE}"
 export MARKETPLACE_OP_INDEX="registry.redhat.io/redhat-marketplace-index:v${OCP_RELEASE}"
-export RH_OP_PACKAGES='cluster-logging,kubevirt-hyperconverged,local-storage-operator,ocs-operator,performance-addon-operator,ptp-operator,sriov-network-operator'
+#export RH_OP_PACKAGES='cluster-logging,kubevirt-hyperconverged,local-storage-operator,ocs-operator,performance-addon-operator,ptp-operator,sriov-network-operator'
+export RH_OP_PACKAGES='local-storage-operator,ocs-operator'
 
 if [ $# -lt 1 ]
 then
